@@ -3,11 +3,21 @@ package org.formacio.component;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+
 @Component
 public class ServeiAlumnat {
 
 	@Autowired
 	RepositoriAlumnes repositoriAlumnes;
+
+
+	@PostConstruct
+	//Insertamos los alumnos a piñon.
+	private void insertarAlumnos(){
+		repositoriAlumnes.altaAlumne(1, "Antonia");
+		repositoriAlumnes.altaAlumne(2, "Joan");
+	}
 	
 	/**
 	 * ha de donar d'alta a la base de dades d'alumnes l'alumne indicat amb 
@@ -22,5 +32,6 @@ public class ServeiAlumnat {
 		}
 		return false;
 	}
+
 	
 }
